@@ -13,6 +13,7 @@ class ShopingAsset extends \yii\web\AssetBundle {
         'css/auto-search.css',
         'css/lightbox.css',
         'css/owl.carousel.css',
+        'css/modal.css'
         
     ];
     public $js = [
@@ -22,7 +23,10 @@ class ShopingAsset extends \yii\web\AssetBundle {
         'js/lightbox-2.6.min.js',
         
         'js/common.js',
-        'js/owl.carousel.min.js'
+        'js/owl.carousel.min.js',
+        'js/cart.min',
+        'js/rivets-cart.min',
+        'js/cookie.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

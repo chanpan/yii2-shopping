@@ -26,7 +26,7 @@ class Department extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['department_name'], 'required'],
+            [['department_name'], 'required','message'=>'กรุณากรอก'],
             [['department_name'], 'string', 'max' => 255],
         ];
     }

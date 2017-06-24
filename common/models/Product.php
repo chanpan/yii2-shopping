@@ -82,4 +82,9 @@ class Product extends \yii\db\ActiveRecord
     {
         return $this->hasOne(ProductType::className(), ['product_type_id' => 'product_type_id']);
     }
+    public function getInfoProductBy($id){
+        $data= Product::find()->asArray()->where('product_id=:id',[
+            ":id"=>$id
+        ])->one();
+    }
 }

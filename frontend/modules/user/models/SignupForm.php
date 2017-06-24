@@ -28,6 +28,7 @@ class SignupForm extends Model
      * @var
      */
     public $password;
+    public $confirmpassword;
 
     /**
      * @inheritdoc
@@ -39,7 +40,7 @@ class SignupForm extends Model
             ['username', 'required'],
             ['username', 'unique',
                 'targetClass'=>'\common\models\User',
-                'message' => Yii::t('frontend', 'This username has already been taken.')
+                'message' => Yii::t('frontend', 'ชื่อผู้ใช้นี้ถูกนำมาใช้แล้ว')
             ],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
@@ -48,11 +49,12 @@ class SignupForm extends Model
             ['email', 'email'],
             ['email', 'unique',
                 'targetClass'=> '\common\models\User',
-                'message' => Yii::t('frontend', 'This email address has already been taken.')
+                'message' => Yii::t('frontend', 'ที่อยู่อีเมลนี้ถูกนำมาใช้แล้ว')
             ],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            ['confirmpassword','required']
         ];
     }
 
@@ -62,9 +64,10 @@ class SignupForm extends Model
     public function attributeLabels()
     {
         return [
-            'username'=>Yii::t('frontend', 'Username'),
-            'email'=>Yii::t('frontend', 'E-mail'),
-            'password'=>Yii::t('frontend', 'Password'),
+            'username'=>Yii::t('frontend', 'ชื่อผู้ใช้งาน'),
+            'email'=>Yii::t('frontend', 'E-mail '),
+            'password'=>Yii::t('frontend', 'รหัสผ่าน'),
+            'confirmpassword'=>'ยืนยันหัสผ่าน'
         ];
     }
 
@@ -83,8 +86,19 @@ class SignupForm extends Model
             $user->status = $shouldBeActivated ? User::STATUS_NOT_ACTIVE : User::STATUS_ACTIVE;
             $user->setPassword($this->password);
             if(!$user->save()) {
-                throw new Exception("User couldn't be  saved");
+                throw new Exception("User couldn't be  saved ");
             };
+//            try{
+//                 $sql="INSERT INTO tbl_user_profile(user_id,firstname,lastname,locale) VALUES(:user_id,:fname,:lname,:locale)";
+//                Yii::$app->db->createCommand($sql,[
+//                    ":user_id"=>$user->id,
+//                    ":fname"=>$user->username,
+//                    ":lname"=>$user->username,
+//                    ":locale"=>"en-US"
+//                ])->execute();
+//            } catch (\yii\db\Exception $ex) {
+//
+//            }
             $user->afterSignup();
             if ($shouldBeActivated) {
                 $token = UserToken::create(
@@ -93,7 +107,7 @@ class SignupForm extends Model
                     Time::SECONDS_IN_A_DAY
                 );
                 Yii::$app->commandBus->handle(new SendEmailCommand([
-                    'subject' => Yii::t('frontend', 'Activation email'),
+                    'subject' => Yii::t('frontend', 'อีเมลเปิดใช้งาน'),
                     'view' => 'activation',
                     'to' => $this->email,
                     'params' => [

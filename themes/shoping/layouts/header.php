@@ -1,3 +1,6 @@
+<?php 
+    $images = \Yii::getAlias('@storageUrl') . "/web/image/";
+?>
 <header style="background: #2d4059">
     <div class="container">
         <div class="row">
@@ -32,46 +35,7 @@
             </div>
             <div class="col-md-7 col-sm-12">
                 <div id="search-by-category">
-                    <div class="search-container">
-                        <input type="text" name="search" id="text-search" value="" placeholder="Search For Product" class="" />
-                        <div class="all-category">
-                            <p><span class="category-select" data-value="0">All Categories</span></p>
-                            <ul class="category-item">
-                                <li class="cat-i" data-value="0">All Categories</li>
-                                <li data-value="20" class="cat-i">Desktops</li>
-                                <li data-value="26" class="cat-i">PC</li>
-                                <li data-value="57" class="cat-i">Tablets</li>
-                                <li data-value="17" class="cat-i">Software</li>
-                                <li data-value="24" class="cat-i">Phones &amp; PDAs</li>
-                                <li data-value="27" class="cat-i">Mac</li>
-                                <li data-value="58" class="cat-i">test 25</li>
-                                <li data-value="40" class="cat-i">test 7</li>
-                                <li data-value="42" class="cat-i">test 9</li>
-                                <li data-value="18" class="cat-i">Laptops</li>
-                                <li data-value="46" class="cat-i">Macs</li>
-                                <li data-value="48" class="cat-i">test 16</li>
-                                <li data-value="25" class="cat-i">Components</li>
-                                <li data-value="45" class="cat-i">Windows</li>
-                                <li data-value="33" class="cat-i">Cameras</li>
-                                <li data-value="34" class="cat-i">MP3 Players</li>
-                                <li data-value="43" class="cat-i">test 11</li>
-                                <li data-value="49" class="cat-i">test 17</li>
-                                <li data-value="50" class="cat-i">test 18</li>
-                                <li data-value="51" class="cat-i">test 19</li>
-                                <li data-value="44" class="cat-i">test 12</li>
-                                <li data-value="52" class="cat-i">test 20</li>
-                                <li data-value="53" class="cat-i">test 21</li>
-                                <li data-value="54" class="cat-i">test 22</li>
-                                <li data-value="55" class="cat-i">test 23</li>
-                                <li data-value="41" class="cat-i">test 8</li>
-                                <li data-value="47" class="cat-i">test 15</li>
-                                <li data-value="56" class="cat-i">test 24</li>
-                                <li data-value="38" class="cat-i">test 4</li>
-                                <li data-value="37" class="cat-i">test 5</li>
-                                <li data-value="39" class="cat-i">test 6</li>
-                            </ul>
-                        </div>
-                    </div>
+                  
                     <div id="sp-btn-search" class="">
                         <button type="button" id="btn-search-category" class="btn btn-default btn-lg">
                             <span class="search-s"><i class="fa fa-search"></i></span>
@@ -136,13 +100,12 @@
                             });
 
 
-                            $('#text-search').keypress(function (e) {
-                                if (e.which === 13) { //Enter key pressed
-                                    $('#btn-search-category').click();//Trigger search button click event
-                                }
-                            });
+                             
 
                             $('#btn-search-category').click(function () {
+                                var global_group = $('.category-select').attr('data-value');
+                                var global_text_search = $('#text-search').val();
+                                
                                 var url = ' ';
                                 var text_search = $('#text-search').val();
                                 if (text_search) {
@@ -152,20 +115,23 @@
                                 if (category_search) {
                                     url += '&category_id=' + encodeURIComponent(category_search);
                                 }
-                                location = url;
+                                //var group = $('.category-select').attr('data-value');
+                                
+                                
+                               // location = url;
                             });
 
                             if (ajax_search_enable === '1') {
-                                $('#text-search').keyup(function (e) {
-                                    var text_search = $(this).val();
-                                    var cate_search = $('.category-select').attr(\"data-value\");
-                                    if (text_search != null && text_search != '') {
-                                        ajaxSearch(text_search, cate_search);
-                                    } else {
-                                        $('.ajax-result-container').html('');
-                                        $('.ajax-loader-container').hide();
-                                    }
-                                });
+//                                $('#text-search').keyup(function (e) {
+//                                    var text_search = $(this).val();
+//                                    var cate_search = $('.category-select').attr(\"data-value\");
+//                                    if (text_search != null && text_search != '') {
+//                                        ajaxSearch(text_search, cate_search);
+//                                    } else {
+//                                        $('.ajax-result-container').html('');
+//                                        $('.ajax-loader-container').hide();
+//                                    }
+//                                });
 
                                 $('ul.category-item li.cat-i').click(function () {
                                     var cate_search = $(this).data('value');
@@ -173,7 +139,7 @@
                                     $('.category-select').attr('data-value', cate_search);
                                     $('.category-select').html($(this).html());
                                     if (text_search != null && text_search != '') {
-                                        ajaxSearch(text_search, cate_search);
+                                         
                                     } else {
                                         $('.ajax-result-container').html('');
                                         $('.ajax-loader-container').hide();
@@ -184,22 +150,7 @@
 
                             }
 
-                            function ajaxSearch(text_search, cate_search) {
-                                $.ajax({
-                                    url: '',
-                                    type: 'post',
-                                    data: {text_search: text_search, cate_search: cate_search},
-                                    beforeSend: function () {
-                                        $('.ajax-loader-container').show();
-                                    },
-                                    success: function (json) {
-                                        if (json['success'] == true) {
-                                            $('.ajax-result-container').html(json['result_html']);
-                                            $('.ajax-loader-container').hide();
-                                        }
-                                    }
-                                });
-                            }
+                            
 
                         });
                     ");
@@ -208,3 +159,4 @@
         </div>
     </div>
 </header>
+ 

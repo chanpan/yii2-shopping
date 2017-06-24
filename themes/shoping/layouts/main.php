@@ -50,3 +50,14 @@ ShopingAsset::register($this);
     </body>
 </html>
 <?php $this->endPage(); ?>
+<style>
+    
+    body{
+            background: #f1f1f1;
+    }
+    #container{
+            background: white;
+            border-color: #d3d3d3;
+            box-shadow: 0px 0px 2px #d3d3d3;
+    }
+</style>

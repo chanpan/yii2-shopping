@@ -118,13 +118,26 @@ class SignInController extends \yii\web\Controller
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
+            if($_POST["SignupForm"]["password"] != $_POST["SignupForm"]["confirmpassword"]){
+                Yii::$app->getSession()->setFlash('alert', [
+                        'body' => Yii::t(
+                            'frontend',
+                            'รหัสผ่านที่คุณกรอกไม่ตรงกัน'
+                        ),
+                        'options' => ['class'=>'alert-danger']
+                ]);
+                return $this->render('signup', [
+                    'model' => $model
+                ]);
+            }
             $user = $model->signup();
             if ($user) {
+                
                 if ($model->shouldBeActivated()) {
                     Yii::$app->getSession()->setFlash('alert', [
                         'body' => Yii::t(
                             'frontend',
-                            'Your account has been successfully created. Check your email for further instructions.'
+                            'สร้างบัญชีของคุณเรียบร้อยแล้ว ตรวจสอบอีเมลของคุณสำหรับคำแนะนำเพิ่มเติม'
                         ),
                         'options' => ['class'=>'alert-success']
                     ]);
@@ -297,4 +310,7 @@ class SignInController extends \yii\web\Controller
             throw new Exception('OAuth error');
         }
     }
+    
+    
+    
 }

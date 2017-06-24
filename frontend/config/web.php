@@ -4,6 +4,7 @@ $config = [
     'controllerNamespace' => 'frontend\controllers',
     'defaultRoute' => 'site/index',
     'bootstrap' => ['maintenance'],
+    'language'=>'th',
     'modules' => [
         'user' => [
             'class' => 'frontend\modules\user\Module',
@@ -12,6 +13,13 @@ $config = [
         'products' => [
             'class' => 'frontend\modules\products\Module',
         ],
+        'informations' => [
+            'class' => 'frontend\modules\informations\Module',
+        ],
+        'service' => [
+            'class' => 'frontend\modules\service\Module',
+        ],
+        
     ],
     'components' => [
         'view' => [
@@ -53,7 +61,10 @@ $config = [
             }
         ],
         'request' => [
-            'cookieValidationKey' => env('FRONTEND_COOKIE_VALIDATION_KEY')
+            'cookieValidationKey' => env('FRONTEND_COOKIE_VALIDATION_KEY'),
+            'parsers'=>[
+                'application/json'=>'yii\web\JsonParser',
+            ]
         ],
         'user' => [
             'class'=>'yii\web\User',

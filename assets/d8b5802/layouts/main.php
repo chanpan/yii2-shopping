@@ -28,8 +28,36 @@ ShopingAsset::register($this);
     <body>
 <?php $this->beginBody() ?>
     <?= $this->render("menu-top.php",['image'=>$image])?>
-    <?= $this->render("header.php",['image'=>$image])?>
+    <div>    
+        <?php $this->render("header.php",['image'=>$image])?>
+        <?= $this->render("menu-bar.php",['image'=>$image])?>
+        
+        <div class="breadcrumb-bg">
+            <div class="container">
+               <?php echo Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+            </div>
+        </div>
+        <?= $content;?>
+        <?= $this->render("footer.php",['image'=>$image])?>
+    </div>    
+        
+        
+        
+        
 <?php $this->endBody() ?>
     </body>
 </html>
 <?php $this->endPage(); ?>
+<style>
+    
+    body{
+            background: #f1f1f1;
+    }
+    #container{
+            background: white;
+            border-color: #d3d3d3;
+            box-shadow: 0px 0px 2px #d3d3d3;
+    }
+</style>

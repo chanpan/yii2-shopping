@@ -36,9 +36,7 @@ $this->title = Yii::t('frontend', 'User Settings ')
     <div class="col-lg-9">
         <h4>ข้อมูลส่วนตัว</h4>
         <hr>
-        <div class="col-md-12">
-            <?php echo $form->field($model, 'student_id')->textInput() ?>    
-        </div>
+        
         <div class="col-md-6">
             <?php echo $form->field($model, 'firstname')->textInput(['maxlength' => 255]) ?>
         </div>
@@ -134,6 +132,9 @@ $this->title = Yii::t('frontend', 'User Settings ')
         <div class="clearfix"></div>
         <h4>ข้อมูลการศึกษา</h4>
         <hr>
+        <div class="col-md-12">
+            <?php echo $form->field($model, 'student_id')->textInput() ?>    
+        </div>
         <div class="col-md-6">
             <a  title="เพิ่มคณะ" class="btn btn-sm btn-info "><i class="fa fa-plus-circle" id="department"></i></a>
             <?php

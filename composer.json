@@ -60,7 +60,13 @@
     "yii2mod/yii2-sweet-alert": "*",
     "lavrentiev/yii2-toastr": "*",
     "kop/yii2-scroll-pager": "^2.5",
-    "kartik-v/yii2-mpdf": "*"
+    "kartik-v/yii2-mpdf": "*",
+    "2amigos/yii2-tinymce-widget": "~1.1",
+    "yiidoc/yii2-redactor": "*",
+    "2amigos/yii2-ckeditor-widget": "^2.1",
+    "bajadev/yii2-ckeditor": "*",
+    "eleiva/yii2-noty": "@dev",
+    "shifrin/yii2-noty": "1.0.1"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "^2.0.0",

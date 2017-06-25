@@ -1,5 +1,6 @@
 <?php
-
+use common\grid\EnumColumn;
+use common\models\User;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -22,19 +23,79 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+<h3>ข้อมูลผู้ใช้</h3><hr>
     <?php echo DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+             
             'username',
-            'auth_key',
+            [
+              'attribute'=>'profile.firstname',  
+              'label'=>'ชื่อ-นามสกุล',
+               'value'=>function($model){
+                    return $model->profile->firstname.' '.$model->profile->lastname;
+               } 
+            ],
+           [
+             'label'=>'เพศ',
+             'value'=>function($model){
+                 $msg="ชาย";
+                 if($model->profile->gender == 2){
+                     $msg="หญิง";
+                 }
+                 return $msg;
+              }  
+           ],         
+            [
+              'label'=>'ชื่อเล่น',
+              'value'=>function($model){
+                $nickname = "ไม่มีข้อมูล";
+                  if($model->profile->middlename){
+                     $nickname = $model->profile->middlename; 
+                  }
+                return $nickname;
+              }
+            ],       
+                    
             'email:email',
-            'status',
-            'created_at:datetime',
-            'updated_at:datetime',
-            'logged_at:datetime',
+            'created_at:date',
+            
         ],
     ]) ?>
 
+</div><hr>
+<h3>ข้อมูลการศึกษา</h3>
+<div>
+<?php echo DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            [ 
+              'label'=>'รหัสนักศึกษา',
+               'value'=>function($model){
+                    
+                    return  $model->profile->student_id;
+               } 
+            ],
+           [
+             'label'=>'ที่อยู่',
+             'value'=>function($model){
+                 //yii\helpers\VarDumper::dump($model->profile->provinces->PROVINCE_NAME, 10, true);exit();
+                  $address = $model->profile->address." ตำบล ".$model->profile->districs->DISTRICT_NAME
+                          .' อำเภอ '.$model->profile->amphurs->AMPHUR_NAME
+                          .' จังหวัด '.$model->profile->provinces->PROVINCE_NAME
+                          .' รหัสไปรษณีย์ '.$model->profile->zipcode;
+                return  $address;
+              }  
+           ],         
+           
+           [
+             'label'=>'เบอร์โทรศัพท์',
+             'value'=>function($model){
+                return  $model->profile->tel;
+              }  
+           ],        
+             
+            
+        ],
+    ]) ?>
 </div>

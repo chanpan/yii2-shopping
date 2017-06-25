@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php Pjax::begin(['id' => 'grid-user-pjax','timeout'=>5000]) ?>
     <?php echo ListView::widget([
         'dataProvider' => $dataProvider,
-        'itemOptions' => ['class' => 'col-sm-4 col-md-4'],
+        'itemOptions' => ['class' => 'item'],
         'itemView' => '_item',
         'pager' => [
             'firstPageLabel' => 'ก่อนหน้า',

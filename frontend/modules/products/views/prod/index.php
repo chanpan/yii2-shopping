@@ -115,15 +115,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <div class="caption">
                                             <h4 class="product-name"><?= $p->product_name;?></h4>
                                         <p class="price">
-                                            <span class="price-new"><?= number_format($p->product_price, 2);?></span> <span class="price-old">$100.00</span>
+                                            <span class="price-new"><?= number_format($p->product_price, 2);?> บาท</span> <span class="price-old"><?= number_format($p->product_price, 2);?></span>
                                         </p>
                                     </div>
-                                    <div class="button-group2">
+<!--                                    <div class="button-group2">
                                         <button type="button" onclick="cart.add('42');" class="addtocart"><i class="fa fa-shopping-bag"></i> <span class="hidden-xs hidden-sm hidden-md"></span></button>
                                         <button type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');" class="compare-btn"><i class="fa fa-balance-scale" aria-hidden="true"></i></button>
                                         <button type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');" class="wishlist-btn"><i class="fa fa-heart"></i></button>
                                         <button type="button" data-toggle="tooltip" title="Go To Product" onclick="location.href = 'http://opencart.webiarch.com/OCSK06/OCSK04/index.php?route=product/product&amp;path=20&amp;product_id=42';" class="zoom-btn"> <i class="fa fa-search"></i></button> 
-                                    </div>
+                                    </div>-->
                                 </div>
                             
                             </div>

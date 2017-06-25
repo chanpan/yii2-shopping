@@ -28,6 +28,19 @@ class SiteController extends \yii\web\Controller
         $this->layout = Yii::$app->user->isGuest || !Yii::$app->user->can('loginToBackend') ? 'base' : 'common';
         return parent::beforeAction($action);
     }
+    public function actionIndex(){
+        $user = User::find()->all();
+        $product = \common\models\Product::find()->all();
+        $product = Yii::$app->db->createCommand("SELECT * FROM `tbl_product` LIMIT 10")->queryAll();
+        $dataProvider = new \yii\data\ArrayDataProvider([
+           'allModels'=>$product
+        ]);
+        return $this->render('index', [
+            'user'=>$user,
+            'product'=>$product,
+            'dataProvider'=>$dataProvider
+        ]);
+    }
 
     public function actionSettings()
     {

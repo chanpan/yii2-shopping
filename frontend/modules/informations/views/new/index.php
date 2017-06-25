@@ -4,7 +4,7 @@
     $img = \Yii::getAlias('@storageUrl') . "/web/img/";
     $image = \Yii::getAlias('@storageUrl') . "/web/image/";
     use common\lib\sdii\widgets\SDModalForm;
-    $this->title = "ข่าวสาร ".$model->product_name;
+    $this->title = "ข่าวสาร ";
     //$this->params['breadcrumbs'][] = ['label' => 'รายการสินค้า', 'url' => ['/products/prod']];
     $this->params['breadcrumbs'][] = $this->title;
 ?>

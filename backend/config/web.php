@@ -3,7 +3,7 @@ $config = [
     'language'=>'th',
     'homeUrl'=>Yii::getAlias('@backendUrl'),
     'controllerNamespace' => 'backend\controllers',
-    'defaultRoute'=>'article/index',
+    'defaultRoute'=>'site/index',
     'controllerMap'=>[
         'file-manager-elfinder' => [
             'class' => 'mihaildev\elfinder\Controller',
@@ -92,7 +92,15 @@ $config = [
         ],
         'products' => [
             'class' => 'backend\modules\products\Module',
-        ]
+        ],
+        'information' => [
+            'class' => 'backend\modules\information\Module',
+        ],
+        'linebot' => [
+            'class' => 'backend\modules\linebot\Module',
+        ],
+        
+          'redactor' => 'yii\redactor\RedactorModule',
     ],
     'as globalAccess'=>[
         'class'=>'\common\behaviors\GlobalAccessBehavior',

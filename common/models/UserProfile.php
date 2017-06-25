@@ -64,6 +64,7 @@ class UserProfile extends ActiveRecord
         return [
             [['user_id','student_id','department_id','subject_id','tel', 'address', 'distric', 'amphur', 'province','zipcode'], 'required'],
             [['user_id', 'gender'], 'integer'],
+            [['student_id'],'unique','message'=>'รหัสนักศึกษาซ้ำกัน'],
             [['gender'], 'in', 'range' => [NULL, self::GENDER_FEMALE, self::GENDER_MALE]],
             [['firstname', 'middlename', 'lastname', 'avatar_path', 'avatar_base_url'], 'string', 'max' => 255],
             ['locale', 'default', 'value' => Yii::$app->language],
@@ -125,5 +126,14 @@ class UserProfile extends ActiveRecord
         return $this->avatar_path
             ? Yii::getAlias($this->avatar_base_url . '/' . $this->avatar_path)
             : $default;
+    }
+    public function getProvinces(){
+       return $this->hasOne(Province::className(), ['PROVINCE_ID' => 'province']);
+    }
+     public function getAmphurs(){
+       return $this->hasOne(Amphur::className(), ['AMPHUR_ID' => 'amphur']);
+    }
+     public function getDistrics(){
+       return $this->hasOne(District::className(), ['DISTRICT_ID' => 'distric']);
     }
 }

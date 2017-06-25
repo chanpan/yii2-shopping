@@ -87,6 +87,7 @@ class SignupForm extends Model
             $user->setPassword($this->password);
             if(!$user->save()) {
                 throw new Exception("User couldn't be  saved ");
+               
             };
 //            try{
 //                 $sql="INSERT INTO tbl_user_profile(user_id,firstname,lastname,locale) VALUES(:user_id,:fname,:lname,:locale)";

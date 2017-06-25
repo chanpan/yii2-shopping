@@ -131,8 +131,10 @@ class SignInController extends \yii\web\Controller
                 ]);
             }
             $user = $model->signup();
+            
             if ($user) {
-                
+                 $msg="message=มีสมาชิกใหม่ http://localhost/php/yii2-starter-kit-lite/backend/user/".$user->id;
+                \common\lib\LineBoth::getLineBoth("I98D9mSpc03jdS4fkr9BOEvRX9mWt1yr9uCwzoRsqYX", $msg);
                 if ($model->shouldBeActivated()) {
                     Yii::$app->getSession()->setFlash('alert', [
                         'body' => Yii::t(

@@ -42,6 +42,13 @@ class UserController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    public function actionUserType()
+    {
+        $searchModel = new UserSearch();
+         
+        return $this->render('user-type', [ 
+        ]);
+    }
 
     /**
      * Displays a single User model.

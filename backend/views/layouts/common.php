@@ -29,34 +29,38 @@ $bundle = BackendAsset::register($this);
 
                         <?php echo \yii\bootstrap\Nav::widget([
                             'options' => ['class' => 'nav navbar-nav'],
+                            'encodeLabels' => false,
                             'items' => [
+                                ['label'=>'<i class="fa fa-home"></i> Home', 'url'=>['/site/index']],
                                 [
-                                    'label'=>Yii::t('backend', 'Timeline'),
-                                    'url'=>['/timeline-event/index']
-                                ],
-                                [
-                                    'label'=>Yii::t('backend', 'Articles'),
-                                    'url'=>['/article/index']
-                                ],
-                                [
-                                    'label'=>Yii::t('backend', 'Products'),
+                                    'label'=>Yii::t('backend', 'จัดการสินค้า'),
                                     'url' => '#',
                                     'items'=>[
-                                        ['label'=>'จัดการสินค้า','url'=>['/products/prod']],
-                                        ['label'=>Yii::t('backend', 'Static pages'), 'url'=>['/page/index']],
-                                        ['label'=>Yii::t('backend', 'Articles'), 'url'=>['/article/index']],
-                                        ['label'=>Yii::t('backend', 'Article Categories'), 'url'=>['/article-category/index']],
+                                        ['label'=>Yii::t('backend', 'สินค้าทั้งหมด'),'url'=>['/products/prod']],
+                                        ['label'=>Yii::t('backend', 'ประเภทสินค้า'), 'url'=>['/products/product-type']],
+                                        ['label'=>Yii::t('backend', 'สินค้าขายดี'), 'url'=>['/products/prod']],
+                                         
                                     ]
                                 ],
                                 [
-                                    'label'=>Yii::t('backend', 'Users'),
-                                    'url'=>['/user/index'],
-                                    'visible'=>Yii::$app->user->can('administrator')
-                                ],
-                                [
-                                    'label'=>Yii::t('backend', 'Other'),
+                                    'label'=>Yii::t('backend', 'จัดการลูกค้า'),
                                     'url' => '#',
                                     'items'=>[
+                                        ['label'=>'ลูกค้าทั้งหมด','url'=>['/user/index'],'visible'=>Yii::$app->user->can('administrator')],
+                                        ['label'=>Yii::t('backend', 'ประเภทลูกค้า'), 'url'=>['/user/user-type']],
+     
+                                    ]
+                                ],
+                                 
+                                [
+                                    'label'=>"ข่าวสาร",'url'=>['/information/news'],
+                                    
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '<i class="fa fa-cog"></i> ตั้งค่า'),
+                                    'url' => '#',
+                                    'items'=>[
+                                        ['label'=>Yii::t('backend', 'อัตราดอกเบี้ยแต่ละเดือน'),'url'=>['/setting/index']],
                                         ['label'=>Yii::t('backend', 'Key-Value Storage'), 'url'=>['/system/key-storage/index']],
                                         ['label'=>Yii::t('backend', 'File Storage'), 'url'=>['/file-storage/index']],
                                         ['label'=>Yii::t('backend', 'Cache'), 'url'=>['/system/cache/index']],

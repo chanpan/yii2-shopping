@@ -22,19 +22,19 @@ if(!empty($credit)){
 
 <div class="col-md-12">
     <div style="padding:20px 0 0 0" id="bag">
-    <span class="text-center" style="        position: relative;
+    <span class="text-center" style="     position: relative;
     top: 0px;
-    
-    font-size: 20pt;
+    font-size: 19pt;
     font-weight: bold;
     color: green;
     background: #e9ffff;
-    display: block;">
+    display: block;
+    padding: 40px;">
         <img src="<?= $image.'point2.png'?>" class="img img-responsive" style="    width: 30px;
     /* float: left; */
     left: 13px;
     padding-left: 2px;
-    margin-top: 5px;
+    margin-top: -3px;
     position: absolute;">
         <?= $bag->bag_count?> ฿</span>
         

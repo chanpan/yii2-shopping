@@ -7,11 +7,12 @@ use Yii;
 /**
  * This is the model class for table "carts".
  *
+ * @property integer $id
  * @property integer $user_id
  * @property string $product_id
  * @property integer $product_item
  * @property integer $product_price
- * @property string $cookie_date
+ * @property integer $cookie_date
  */
 class Carts extends \yii\db\ActiveRecord
 {
@@ -30,8 +31,7 @@ class Carts extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id', 'product_item', 'product_price'], 'integer'],
-            [['cookie_date'], 'safe'],
+            [['user_id', 'product_item', 'product_price', 'cookie_date'], 'integer'],
             [['product_id'], 'string', 'max' => 255],
         ];
     }
@@ -42,6 +42,7 @@ class Carts extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id' => Yii::t('app', 'ID'),
             'user_id' => Yii::t('app', 'User ID'),
             'product_id' => Yii::t('app', 'Product ID'),
             'product_item' => Yii::t('app', 'Product Item'),

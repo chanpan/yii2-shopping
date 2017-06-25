@@ -10,57 +10,39 @@
 ?>
 <div class="container product-inner">
     <div class="row">
-        <div id="content" class="col-sm-12">
+        <div id="content" class="col-sm-12" >
             <div class="row firdtpart">
-                <div class="col-lg-5 col-md-5 col-sm-6 full-width col-xs-12 ">
-                    <ul class="thumbnails col-sm-12">
+                <div class="col-lg-5 col-md-5 col-sm-6 full-width col-xs-12 " style="padding:15px;">
+                    <ul class="thumbnails col-sm-12" >
                         <li>
                              
-                               <img src="<?= $img.$model->product_image;?>" id="zoom_03" class="img-responsive" alt="thumb-img">
+                               <img style="margin: 0 auto;" src="<?= $img.$model->product_image;?>" id="zoom_03" class="img-responsive" alt="thumb-img">
                            
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 product-inner-content full-width top-space">
+                <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 product-inner-content full-width top-space" style="padding:15px;">
                     <h1><?= $model->product_name; ?></h1>
                     <hr class="black-hr">
                     <ul class="list-unstyled">
                         <li>
-                            <div class="manufacture-part"><span class="text-decor">Brand:</span></div> <a href="http://opencart.webiarch.com/OCSK06/OCSK04/index.php?route=product/manufacturer/info&amp;manufacturer_id=8"
-                                class="text-brand">Apple</a></li>
+                           <?= $model->product_detail;?>  
                         <li>
-                            <div class="manufacture-part"><span class="text-decor">Product Code:</span></div><span class="text-decor"> Product 15</span></li>
-                        <li>
-                            <div class="manufacture-part"><span class="text-decor">Reward Points:</span ></div><span class="text-decor"> 100</span></li>
-                        <!--Avilability for stock-->
-                        <li>
-                            <div class="manufacture-part"><span class="text-decor">avability:</span></div>
-                            <span class="text-decor">
-                                In Stock                            </span>
-                        </li>
-
-                        <!--Avilability for stock over-->
-                        <!--<li> </li>-->
+                        
                     </ul>
                     <hr class="black-hr">
 
 
                     <ul class="list-unstyled list-inline">
                         <li>
-                            <h2 class="price"><?= number_format($model->product_price, 2)?> บาท</h2>
+                            <h2 class="price">ราคา <?= number_format($model->product_price, 2)?> บาท</h2>
                         </li>
-                        <li><span style="text-decoration: line-through;" class="line-price">$100.00</span></li>
-                        <li class="tax">Ex Tax: $90.00</li>
-                        <li class="points">Price in reward points:<span class="point-num"> 400</span></li>
+                        
                          
                     </ul>
                     <hr class="black-hr">
                     <div id="product">
-                        <!-- <h3></h3>-->
-
-                        <!--Radio option-->
-                        <!-- Radio OR color Button start-->
-                        <div class="form-group required">
+                       <div class="form-group required">
 
                         </div>
 
@@ -68,7 +50,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-1 col-sm-1 col-xs-1 op-box ">
-                                    <label class="control-label" for="input-quantity">Qty</label>
+                                    <label class="control-label" for="input-quantity">จำนวน</label>
                                 </div>
                                 <div class=" col-md-5 col-sm-11 col-xs-11 op-box qty-plus-minus">
                                     <button type="button" id="minusbutton" class="form-control pull-left btn-number"  data-type="minus" data-field="quantity">
@@ -147,6 +129,8 @@
     ]);  
  
 ?>
+<?= $this->registerJSFile(yii\helpers\Url::to('@web/frontend/web/noty/noty.min.js'))?>
+<?= $this->registerJSFile(yii\helpers\Url::to('@web/frontend/web/noty/notylib.js'))?>
 <?php 
    $this->registerJS("
     var input_quantity = parseInt($('#input-quantity').val()); 
@@ -169,7 +153,8 @@
     /* ใส่ตระกร้า */
     $('#button-cart').click(function(){
         if($('#input-quantity').val() == '' || $('#input-quantity').val()==0){
-            alert('กรุณาเลือกจำนวนสินค้า');
+             
+            noty(type='warning', layout='bottomRight', message='กรุณาเลือกจำนวนสินค้า');
             return false;
         } 
         var pid = btoa('".$model->product_id."');

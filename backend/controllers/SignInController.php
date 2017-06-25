@@ -97,9 +97,10 @@ class SignInController extends Controller
            // print_r($_POST['UserProfile']['tel']);exit();
             //echo $tel;exit();
             if($model->save()){
+                
                 Yii::$app->session->setFlash('alert', [
                 'options'=>['class'=>'alert-success'],
-                'body'=>Yii::t('backend', 'Your profile has been successfully saved', [], $model->locale)
+                'body'=>Yii::t('backend', 'แก้ไขโปรไฟล์แล้ว', [], $model->locale)
             ]);
             return $this->refresh();
             }

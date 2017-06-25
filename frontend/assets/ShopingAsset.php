@@ -27,7 +27,7 @@ class ShopingAsset extends \yii\web\AssetBundle {
         'js/cart.min',
         'js/rivets-cart.min',
         'js/cookie.js',
-        'noty/noty.min.js'
+         
     ];
     public $depends = [
         'yii\web\YiiAsset',

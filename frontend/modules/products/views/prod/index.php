@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-<div class="container">
+<div class="container" >
     <h1>Product</h1>
     <div class="row cat-row category-page"><div class=""><aside id="column-left" class="col-sm-3 hidden-xs">
                 <hr class="catetophr">
@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 
             </aside>
-            <div id="content" class="col-sm-9">    <hr class="catetophr">
+            <div id="content" class="col-sm-9" >    <hr class="catetophr">
                 <div id="cat-frist-row" class="row">
                     <div class="col-md-4 col-lg-2 col-sm-3 col-xs-12">
                         <div class="btn-group btn-group-sm ">

@@ -11,7 +11,8 @@ $this->title = "อัตราดอกเบี้ย";
       </span>
     </div><!-- /input-group -->
 </div>
-
+<?= $this->registerJSFile(yii\helpers\Url::to('@web/web/noty/noty.min.js'))?>
+<?= $this->registerJSFile(yii\helpers\Url::to('@web/web/noty/notylib.js'))?>
 <?= $this->registerJS("
     $('#btnSave').click(function(){
         $.ajax({
@@ -21,26 +22,8 @@ $this->title = "อัตราดอกเบี้ย";
             dataType:'JSON',
             success:function(data){
                 console.log(data.price);
-                " . 
-               
-                     Noty::widget([
-                         'text' => 'Hi! Looks good!',
-                         'type' => Noty::INFORMATION,
-                         'useAnimateCss' => true,
-                         'clientOptions' => [
-                             'timeout' => 5000,
-                             'layout' => 'top',
-                             'dismissQueue' => true,
-                             'theme' => 'relax',
-                             'animation' => [
-                                 'open' => 'animated bounceInLeft',
-                                 'close' => 'animated bounceOutLeft',
-                                 'easing' => 'swing',
-                                 'speed' => 500
-                             ]
-                         ]
-                     ])
-                . ";
+                
+               noty(type='success', layout='bottomRight', message=''+data.message);
                 $('#price').html(data.price);
             }
         });

@@ -10,7 +10,7 @@ use \common\models\ArticleCategory;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
- use eleiva\noty\Noty;
+ 
 class SettingController extends Controller
 {
  
@@ -33,27 +33,11 @@ class SettingController extends Controller
                 
            $model = \common\models\Interest::find()->one(); 
            
-                echo Noty::widget([
-                     'text' => 'Hi! Looks good!',
-                     'type' => Noty::INFORMATION,
-                     'useAnimateCss' => true,
-                     'clientOptions' => [
-                         'timeout' => 5000,
-                         'layout' => 'top',
-                         'dismissQueue' => true,
-                         'theme' => 'relax',
-                         'animation' => [
-                             'open' => 'animated bounceInLeft',
-                             'close' => 'animated bounceOutLeft',
-                             'easing' => 'swing',
-                             'speed' => 500
-                         ]
-                     ]
-                 ]);
+                 
            $result = [
                     'status' => 'success',
                     'action' => 'create',
-                    'message' => '<strong><i class="glyphicon glyphicon-remove-sign"></i> Success!</strong> ' . Yii::t('app', ''),
+                    'message' => '<strong><i class="glyphicon glyphicon-ok"></i> Success!</strong> ' . Yii::t('app', ''),
                     'price'=>$model->price
                 ];
            return $result;

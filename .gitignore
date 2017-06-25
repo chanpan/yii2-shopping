@@ -1,7 +1,7 @@
 # Env
 /.env
 /vhost.conf
-
+/assets
 # composer
 /vendor
 composer.phar

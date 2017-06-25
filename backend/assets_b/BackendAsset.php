@@ -16,12 +16,14 @@ class BackendAsset extends AssetBundle
     public $baseUrl = '@web/web';
 
     public $css = [
-        'css/style.css'
+        'css/style.css',
+        'noty/noty.css'
     ];
     public $js = [
         'js/app.js',
         'js/libs/bootbox.min.js',
         'js/libs/confirm.js',
+       // 'noty/noty.min.js'
     ];
 
     public $depends = [

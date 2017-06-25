@@ -13,8 +13,8 @@ class ShopingAsset extends \yii\web\AssetBundle {
         'css/auto-search.css',
         'css/lightbox.css',
         'css/owl.carousel.css',
-        'css/modal.css'
-        
+        'css/modal.css',
+        'noty/noty.css'
     ];
     public $js = [
         'js/jquery.elevatezoom.js',
@@ -26,7 +26,8 @@ class ShopingAsset extends \yii\web\AssetBundle {
         'js/owl.carousel.min.js',
         'js/cart.min',
         'js/rivets-cart.min',
-        'js/cookie.js'
+        'js/cookie.js',
+        'noty/noty.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
